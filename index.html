@@ -434,6 +434,59 @@
             transform: rotate(8deg);
             pointer-events: none;
         }
+
+        /* Countdown */
+        .countdown {
+            margin-top: 14px;
+            border: 1px solid rgba(242, 199, 218, .85);
+            background: rgba(255, 255, 255, .72);
+            border-radius: 18px;
+            padding: 14px;
+            min-width: 0;
+        }
+
+        .cd-title {
+            font-weight: 700;
+            color: #2f1e28;
+            margin: 0 0 10px;
+        }
+
+        .cd-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 10px;
+        }
+
+        .cd-box {
+            border-radius: 14px;
+            border: 1px solid rgba(242, 199, 218, .75);
+            background: rgba(255, 255, 255, .80);
+            padding: 10px 8px;
+            text-align: center;
+        }
+
+        .cd-num {
+            font-family: "Playfair Display", serif;
+            font-weight: 700;
+            font-size: clamp(18px, 4.2vw, 28px);
+            line-height: 1;
+        }
+
+        .cd-lbl {
+            margin-top: 6px;
+            font-size: 12px;
+            color: var(--muted);
+            font-weight: 700;
+            letter-spacing: .6px;
+            text-transform: uppercase;
+        }
+
+        .cd-note {
+            margin-top: 10px;
+            font-size: 12px;
+            color: var(--muted);
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -522,9 +575,34 @@
                     <!-- SOLO un botón en el HERO -->
                     <div class="actions">
                         <a class="btn btn-primary" href="./BabyShower.ics">
-                            Agregar evento al calendario del dispositivo
+                            Agregar Evento al Calendario del Dispositivo
                         </a>
                     </div>
+
+                    <!-- Countdown -->
+                    <div class="countdown" aria-label="Cuenta regresiva">
+                        <div class="cd-title">Falta poquito ✨</div>
+                        <div class="cd-grid" id="countdown">
+                            <div class="cd-box">
+                                <div class="cd-num" id="cdDays">--</div>
+                                <div class="cd-lbl">Días</div>
+                            </div>
+                            <div class="cd-box">
+                                <div class="cd-num" id="cdHours">--</div>
+                                <div class="cd-lbl">Horas</div>
+                            </div>
+                            <div class="cd-box">
+                                <div class="cd-num" id="cdMins">--</div>
+                                <div class="cd-lbl">Min</div>
+                            </div>
+                            <div class="cd-box">
+                                <div class="cd-num" id="cdSecs">--</div>
+                                <div class="cd-lbl">Seg</div>
+                            </div>
+                        </div>
+                        <div class="cd-note" id="cdNote">Sábado 24 de enero • 6:00 PM</div>
+                    </div>
+
 
                 </div>
 
@@ -640,9 +718,9 @@
 
                     <!-- NUEVO: RSVP WHATSAPP -->
                     <div class="map-card">
-                        <p style="margin:0 0 6px"><b>Confirmar por WhatsApp (RSVP)</b></p>
+                        <p style="margin:0 0 6px"><b>Confirmar por WhatsApp</b></p>
                         <p style="margin:0;color:var(--muted);line-height:1.65">
-                            Confirma tu asistencia por WhatsApp.
+                            El único medio para confirmar tu asistencia es por WhatsApp.
                             <br>
                             Por temas de seguridad del edificio, el ingreso será únicamente para personas
                             registradas en la lista de invitados.
@@ -652,7 +730,7 @@
                         </p>
                         <div class="actions" style="margin-top:10px">
                             <a class="btn btn-primary" id="btnWhatsApp" target="_blank" rel="noopener">
-                                RSVP por WhatsApp
+                                Responder por WhatsApp
                             </a>
                         </div>
                     </div>
@@ -703,6 +781,47 @@
     </div>
 
     <script>
+        // Countdown (America/Lima)
+        const EVENT_START_LIMA = "2026-01-24T18:00:00-05:00";
+
+        function pad2(n) {
+            return String(n).padStart(2, "0");
+        }
+
+        function updateCountdown() {
+            const target = new Date(EVENT_START_LIMA).getTime();
+            const now = Date.now();
+            let diff = target - now;
+
+            if (diff <= 0) {
+                document.getElementById("cdDays").textContent = "0";
+                document.getElementById("cdHours").textContent = "00";
+                document.getElementById("cdMins").textContent = "00";
+                document.getElementById("cdSecs").textContent = "00";
+                document.getElementById("cdNote").textContent = "¡Hoy es el día! 💗";
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            diff -= days * (1000 * 60 * 60 * 24);
+
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            diff -= hours * (1000 * 60 * 60);
+
+            const mins = Math.floor(diff / (1000 * 60));
+            diff -= mins * (1000 * 60);
+
+            const secs = Math.floor(diff / 1000);
+
+            document.getElementById("cdDays").textContent = String(days);
+            document.getElementById("cdHours").textContent = pad2(hours);
+            document.getElementById("cdMins").textContent = pad2(mins);
+            document.getElementById("cdSecs").textContent = pad2(secs);
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
         /**************
          * EDITA AQUÍ *
          **************/
