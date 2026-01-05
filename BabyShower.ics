@@ -1,0 +1,29 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Invitacion Baby Shower//ES
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:America/Lima
+BEGIN:STANDARD
+DTSTART:19700101T000000
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0500
+TZNAME:-05
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:babyshower-andres-francheska@andresllanos0498.github.io
+DTSTAMP:20260104T000000Z
+SUMMARY:Baby Shower Nuestra Bebé
+DTSTART;TZID=America/Lima:20260124T180000
+DTEND;TZID=America/Lima:20260124T220000
+LOCATION:Jirón Echenique 921\, Magdalena del Mar\, Lima\, Perú
+DESCRIPTION:Te esperamos para celebrar la llegada de nuestra bebé 💗\n\nFecha: 24 de enero de 2026\nHora: 6:00 PM – 10:00 PM\nUbicación: Jirón Echenique 921\, Magdalena del Mar
+BEGIN:VALARM
+TRIGGER:-PT7H
+ACTION:DISPLAY
+DESCRIPTION:Recordatorio: Baby Shower 💗
+END:VALARM
+END:VEVENT
+END:VCALENDAR
