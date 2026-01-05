@@ -1,0 +1,787 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Baby Shower | Invitación</title>
+
+    <!-- Tipografías -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg1: #fff6fb;
+            --bg2: #fffdf7;
+            --card: #ffffffcc;
+            --stroke: #f2c7da;
+            --text: #3d2c37;
+            --muted: #7a6673;
+            --pink: #f7a8c7;
+            --pink2: #ffd1e4;
+            --rose: #fbe0ee;
+            --gold: #d9b36c;
+            --shadow: 0 18px 60px rgba(60, 20, 40, .12);
+            --radius: 24px;
+            --max: 1040px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            font-family: Poppins, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(1200px 650px at 15% 0%, #ffe3f0 0%, transparent 60%),
+                radial-gradient(1000px 600px at 85% 10%, #fff2d9 0%, transparent 55%),
+                linear-gradient(180deg, var(--bg1), var(--bg2));
+        }
+
+        /* Layout */
+        .container {
+            width: min(var(--max), 100%);
+            margin: 0 auto;
+            padding: 18px 14px 42px;
+        }
+
+        header.hero {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius);
+            background: rgba(255, 255, 255, .65);
+            border: 1px solid rgba(255, 255, 255, .9);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(10px);
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: -35%;
+            background:
+                radial-gradient(circle at 25% 28%, rgba(247, 168, 199, .42), transparent 55%),
+                radial-gradient(circle at 80% 24%, rgba(217, 179, 108, .22), transparent 55%),
+                radial-gradient(circle at 55% 75%, rgba(251, 224, 238, .68), transparent 60%);
+            transform: rotate(8deg);
+            pointer-events: none;
+        }
+
+        .hero-inner {
+            position: relative;
+            padding: 22px;
+            display: grid;
+            gap: 18px;
+            align-items: center;
+        }
+
+        .hero-copy {
+            position: relative;
+            padding: 22px;
+            border-radius: 18px;
+
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.28'%3E%3Cellipse cx='150' cy='175' rx='62' ry='52' fill='%23ffe3f0' stroke='%23f2c7da' stroke-width='3.5'/%3E%3Cellipse cx='125' cy='90' rx='20' ry='42' fill='%23fff6fb' stroke='%23f2c7da' stroke-width='3.5'/%3E%3Cellipse cx='175' cy='90' rx='20' ry='42' fill='%23fff6fb' stroke='%23f2c7da' stroke-width='3.5'/%3E%3Ccircle cx='140' cy='170' r='3.5' fill='%237a6673'/%3E%3Ccircle cx='160' cy='170' r='3.5' fill='%237a6673'/%3E%3Cpath d='M145 182c6 6 14 6 20 0' fill='none' stroke='%23d9b36c' stroke-width='3' stroke-linecap='round'/%3E%3C/g%3E%3C/svg%3E");
+
+            background-repeat: no-repeat;
+            background-size: 260px;
+            background-position: right 10px top 6px;
+        }
+
+
+        /* responsive grid: 1 col mobile, 2 col desktop */
+        @media (min-width: 920px) {
+            .hero-inner {
+                grid-template-columns: 1.1fr .9fr;
+                padding: 30px;
+            }
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            border: 1px solid rgba(242, 199, 218, .9);
+            background: rgba(255, 255, 255, .7);
+            border-radius: 999px;
+            width: max-content;
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        h1 {
+            font-family: "Playfair Display", serif;
+            font-weight: 700;
+            font-size: clamp(30px, 5.2vw, 52px);
+            line-height: 1.02;
+            margin: 8px 0 4px;
+            letter-spacing: .2px;
+        }
+
+        .sub {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.65;
+            font-size: 15px;
+            max-width: 56ch;
+        }
+
+        .name {
+            margin: 10px 0 0;
+            font-family: "Playfair Display", serif;
+            font-weight: 700;
+            font-size: clamp(24px, 4.2vw, 40px);
+            color: #33212c;
+        }
+
+        .name small {
+            display: block;
+            font-family: Poppins, sans-serif;
+            font-weight: 600;
+            color: var(--muted);
+            font-size: 12px;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        /* Info cards */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-top: 14px;
+        }
+
+        @media (min-width: 700px) {
+            .info-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .info {
+            border: 1px solid rgba(242, 199, 218, .85);
+            background: rgba(255, 255, 255, .72);
+            border-radius: 18px;
+            padding: 14px 14px 12px;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            min-height: 92px;
+        }
+
+        .info h4 {
+            margin: 0;
+            font-size: 12px;
+            color: var(--muted);
+            font-weight: 700;
+            letter-spacing: .6px;
+            text-transform: uppercase;
+        }
+
+        .info p {
+            margin: 5px 0 0;
+            font-size: 14px;
+            line-height: 1.45;
+        }
+
+        .icon {
+            width: 36px;
+            height: 36px;
+            flex: 0 0 36px;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(180deg, rgba(247, 168, 199, .58), rgba(251, 224, 238, .68));
+            border: 1px solid rgba(242, 199, 218, .78);
+        }
+
+        /* Buttons */
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        .btn {
+            border: 0;
+            cursor: pointer;
+            border-radius: 999px;
+            padding: 12px 14px;
+            font-weight: 700;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            transition: transform .06s ease, filter .18s ease;
+            user-select: none;
+            white-space: nowrap;
+        }
+
+        .btn:active {
+            transform: translateY(1px) scale(.99);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--pink), var(--pink2));
+            color: #2f1e28;
+            box-shadow: 0 10px 26px rgba(247, 168, 199, .34);
+            border: 1px solid rgba(242, 199, 218, .92);
+        }
+
+        .btn-ghost {
+            background: rgba(255, 255, 255, .78);
+            color: #2f1e28;
+            border: 1px solid rgba(242, 199, 218, .92);
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 16px;
+            border-radius: var(--radius);
+            background: rgba(255, 255, 255, .62);
+            border: 1px solid rgba(255, 255, 255, .9);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+        }
+
+        .section .inner {
+            padding: 18px;
+        }
+
+        @media (min-width: 920px) {
+            .section .inner {
+                padding: 22px 26px;
+            }
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin: 0 0 10px;
+        }
+
+        .section-title h2 {
+            font-family: "Playfair Display", serif;
+            margin: 0;
+            font-size: clamp(20px, 3vw, 28px);
+            letter-spacing: .2px;
+        }
+
+        .section-title span {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        /* Map block */
+        .map-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 14px;
+            align-items: stretch;
+        }
+
+        @media (min-width: 920px) {
+            .map-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .map-card {
+            border: 1px solid rgba(242, 199, 218, .85);
+            background: rgba(255, 255, 255, .72);
+            border-radius: 18px;
+            padding: 14px;
+        }
+
+        .map-embed {
+            width: 100%;
+            height: 320px;
+            border: 0;
+            border-radius: 14px;
+            overflow: hidden;
+        }
+
+        /* Gallery / decorations */
+        .decor {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        @media (min-width: 700px) {
+            .decor {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .tile {
+            border-radius: 18px;
+            background: rgba(255, 255, 255, .72);
+            border: 1px solid rgba(242, 199, 218, .85);
+            padding: 10px;
+            display: grid;
+            place-items: center;
+            min-height: 110px;
+        }
+
+        .note {
+            margin: 10px 0 0;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        footer {
+            text-align: center;
+            color: var(--muted);
+            font-size: 12px;
+            padding: 18px 10px 0;
+        }
+
+        /* little sticker */
+        .sticker {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            width: 86px;
+            height: 86px;
+            opacity: .96;
+            filter: drop-shadow(0 10px 18px rgba(60, 20, 40, .14));
+            transform: rotate(8deg);
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- HERO -->
+        <header class="hero">
+            <!-- sticker -->
+            <svg class="sticker" viewBox="0 0 120 120" aria-hidden="true">
+                <defs>
+                    <linearGradient id="babyGirlGrad" x1="0" x2="1">
+                        <stop offset="0" stop-color="#ffd1e4" />
+                        <stop offset="1" stop-color="#f7a8c7" />
+                    </linearGradient>
+                </defs>
+
+                <!-- fondo -->
+                <circle cx="60" cy="60" r="48" fill="url(#babyGirlGrad)" stroke="#f2c7da" stroke-width="2" />
+
+                <!-- carita -->
+                <circle cx="60" cy="58" r="20" fill="#fff" stroke="#f2c7da" stroke-width="1.5" />
+
+                <!-- ojos -->
+                <circle cx="53" cy="58" r="2.2" fill="#7a6673" />
+                <circle cx="67" cy="58" r="2.2" fill="#7a6673" />
+
+                <!-- sonrisa -->
+                <path d="M54 64c3 3 9 3 12 0" fill="none" stroke="#d9b36c" stroke-width="2" stroke-linecap="round" />
+
+                <!-- moñito -->
+                <circle cx="60" cy="34" r="3.5" fill="#f7a8c7" />
+                <path d="M56 34c-6-3-10 2-6 6 4 4 8 1 6-6z" fill="#ffd8ea" stroke="#f2c7da" stroke-width="1" />
+                <path d="M64 34c6-3 10 2 6 6-4 4-8 1-6-6z" fill="#ffd8ea" stroke="#f2c7da" stroke-width="1" />
+            </svg>
+
+            <div class="hero-inner">
+                <!-- Copy -->
+                <div class="hero-copy">
+                    <div class="badge">
+                        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 21s-8-4.7-10-10C.4 7.2 2.3 4.5 5.5 4.1c1.7-.2 3.4.5 4.5 1.8 1.1-1.3 2.8-2 4.5-1.8 3.2.4 5.1 3.1 3.5 6.9-2 5.3-10 10-10 10z" fill="#f7a8c7" stroke="#f2c7da" stroke-width="1.2" />
+                        </svg>
+                        Invitación especial
+                    </div>
+
+                    <h1>Baby Shower</h1>
+
+                    <p class="name">
+                        <small>Nombre de la bebé</small>
+                        <span id="babyName">My Baby</span>
+                    </p>
+
+                    <p class="sub">
+                        Te invitamos a celebrar la dulce llegada de nuestra niña 💗
+                        <br />Una tarde bonita, delicada y llena de amor.
+                    </p>
+
+                    <div class="info-grid">
+                        <div class="info">
+                            <div class="icon" aria-hidden="true">
+                                <svg width="18" height="18" viewBox="0 0 24 24">
+                                    <path d="M7 2v3M17 2v3M4 7h16M5 5h14a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" fill="none" stroke="#2f1e28" stroke-width="1.8" stroke-linecap="round" />
+                                    <path d="M7 11h4M7 15h6" stroke="#d9b36c" stroke-width="1.8" stroke-linecap="round" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Fecha</h4>
+                                <p><strong>24 de enero, 2026</strong></p>
+                                <p style="margin-top:6px;color:var(--muted);font-size:12px">
+                                    Hora: <span id="prettyStart">4:00 PM</span> – <span id="prettyEnd">7:00 PM</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="info">
+                            <div class="icon" aria-hidden="true">
+                                <svg width="18" height="18" viewBox="0 0 24 24">
+                                    <path d="M12 22s7-7.1 7-13a7 7 0 0 0-14 0c0 5.9 7 13 7 13z" fill="none" stroke="#2f1e28" stroke-width="1.8" />
+                                    <circle cx="12" cy="9" r="2.5" fill="#f7a8c7" stroke="#f2c7da" stroke-width="1.2" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Lugar</h4>
+                                <p><strong>Magdalena del Mar</strong></p>
+                                <p>Jirón Echenique 921</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SOLO un botón en el HERO -->
+                    <div class="actions">
+                        <button class="btn btn-primary" id="btnIcs" type="button">
+                            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M20 6L9 17l-5-5" fill="none" stroke="#2f1e28" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            Confirmar Asistencia (crear evento en tu calendario)
+                        </button>
+                    </div>
+
+                </div>
+
+                <!-- ART -->
+                <div aria-label="Ilustración baby shower niña" style="border-radius:18px;
+            border:1px solid rgba(242,199,218,.85);
+            background:rgba(255,255,255,.70);
+            padding:12px;">
+
+                    <img src="https://raw.githubusercontent.com/AndresLlanos0498/images/refs/heads/main/1.png" alt="Esperando a nuestra bebé" style="
+      width:100%;
+      height:auto;
+      display:block;
+      border-radius:14px;
+      object-fit:cover;
+    " />
+                    <p style="
+  margin:12px 0 0;
+  text-align:center;
+  font-family:'Playfair Display', serif;
+  font-size:16px;
+  color:#33212c;
+">
+                        Nuestra bebé viene en camino y la esperamos con mucho amor 💗
+                    </p>
+
+
+                </div>
+
+
+            </div>
+        </header>
+
+        <!-- UBICACIÓN -->
+        <section class="section" aria-label="Ubicación">
+            <div class="inner">
+                <div class="section-title">
+                    <h2>Ubicación</h2>
+                    <span id="addressTop">Jirón Echenique 921, Magdalena del Mar</span>
+                </div>
+
+                <div class="map-grid">
+                    <div class="map-card">
+                        <p style="margin:0 0 10px;color:var(--muted);font-size:13px;line-height:1.5">
+                            Toca un botón para navegar:
+                        </p>
+                        <div class="actions" style="margin-top:0">
+                            <a class="btn btn-primary" id="btnWaze2" target="_blank" rel="noopener">Llegar con Waze</a>
+                            <a class="btn btn-ghost" id="btnMaps2" target="_blank" rel="noopener">Llegar con Google Maps</a>
+                        </div>
+                        <p class="note" style="margin-top:12px">
+                            Dirección: <b>Jirón Echenique 921, Magdalena del Mar</b>
+                        </p>
+                    </div>
+
+                    <div class="map-card">
+                        <!-- Embed por query (simple y compatible) -->
+                        <iframe class="map-embed" id="mapsEmbed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" aria-label="Mapa de Google"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DETALLES / RECOMENDACIONES -->
+        <section class="section" aria-label="Detalles">
+            <div class="inner">
+                <div class="section-title">
+                    <h2>Detalles</h2>
+                </div>
+                <div class="map-card">
+                    <p style="margin:0 0 8px"><b>Ambiente musical</b></p>
+                    <p style="margin:0 0 10px;color:var(--muted);line-height:1.6">
+                        Te acompañamos con una canción especial mientras ves la invitación 💗
+                    </p>
+
+                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4knc1Fp3kbuq8bH2byOvLu" width="100%" height="80" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
+                    </iframe>
+                </div>
+                <div style="display:grid;gap:10px;grid-template-columns:1fr;">
+                    <div class="map-card">
+                        <p style="margin:0 0 6px"><b>Mensaje</b></p>
+                        <p style="margin:0;color:var(--muted);line-height:1.65">
+                            Te esperamos para compartir una linda velada, con comida y bebidas,
+                            momentos especiales, sorpresas y dinámicas preparadas con mucho cariño. 💗
+                        </p>
+                    </div>
+
+                    <!-- NUEVO: LISTA DE REGALOS -->
+                    <div class="map-card">
+                        <p style="margin:0 0 6px"><b>Lista de regalos</b></p>
+                        <p style="margin:0;color:var(--muted);line-height:1.65">
+                            Y no olvides 🎁👶, que puedes apoyarnos con alguno de estos detalles para la llegada de la bebé:
+                        </p>
+                        <ul style="margin:8px 0 0 18px;color:var(--muted);line-height:1.6">
+                            <li>Artículos de movilidad o descanso para bebé</li>
+                            <li>Colecho o cuna adosable para bebé</li>
+                            <li>Mecedora o columpio para bebé</li>
+                            <li>Bañera para bebé</li>
+                            <li>Set de cuna (protector, edredón o sábanas de algodón)</li>
+                            <li>Accesorios de lactancia o alimentación</li>
+                            <li>Set de alimentación (platos antideslizantes, baberos de silicona, etc.)</li>
+                            <li>Mochila pañalera o artículos de uso diario</li>
+                        </ul>
+                        <p style="margin-top:10px;color:var(--muted);font-size:13px;line-height:1.6">
+                            💗 Lo más importante es tu presencia y el cariño con el que nos acompañes;
+                            cualquier detalle que nazca de tu corazón será bienvenido.
+                        </p>
+                    </div>
+
+
+
+                    <!-- NUEVO: RSVP WHATSAPP -->
+                    <div class="map-card">
+                        <p style="margin:0 0 6px"><b>RSVP</b></p>
+                        <p style="margin:0;color:var(--muted);line-height:1.65">
+                            Confirma tu asistencia por WhatsApp.
+                            <br>
+                            Por temas de seguridad del edificio, el ingreso será únicamente para personas
+                            registradas en la lista de invitados.
+                            <br>
+                            Si decides confirmar a último momento, no hay problema:
+                            <b>te registramos de inmediato</b>, incluso el mismo día del evento 💗
+                        </p>
+                        <div class="actions" style="margin-top:10px">
+                            <a class="btn btn-primary" id="btnWhatsApp" target="_blank" rel="noopener">
+                                RSVP por WhatsApp
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="decor" aria-label="Decoraciones">
+                        <div class="tile">
+                            <!-- biberón -->
+                            <svg width="54" height="54" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M10 2h4v3h-4z" fill="#fff2d9" stroke="#f2c7da" stroke-width="1.2" />
+                                <path d="M9 5h6v2H9z" fill="#ffd8ea" stroke="#f2c7da" stroke-width="1.2" />
+                                <path d="M8 7h8l-1 15H9L8 7z" fill="#fff" stroke="#f2c7da" stroke-width="1.2" />
+                                <path d="M10 12h4" stroke="#d9b36c" stroke-width="1.6" stroke-linecap="round" />
+                            </svg>
+                        </div>
+                        <div class="tile">
+                            <!-- corazón -->
+                            <svg width="54" height="54" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12 21s-8-4.7-10-10C.4 7.2 2.3 4.5 5.5 4.1c1.7-.2 3.4.5 4.5 1.8 1.1-1.3 2.8-2 4.5-1.8 3.2.4 5.1 3.1 3.5 6.9-2 5.3-10 10-10 10z" fill="#f7a8c7" stroke="#f2c7da" stroke-width="1.2" />
+                            </svg>
+                        </div>
+                        <div class="tile">
+                            <!-- estrella -->
+                            <svg width="54" height="54" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12 2l2.6 6.8L22 9l-5.5 4.3L18 21l-6-3.7L6 21l1.5-7.7L2 9l7.4-.2L12 2z" fill="#fff2d9" stroke="#f2c7da" stroke-width="1.2" />
+                            </svg>
+                        </div>
+                        <div class="tile">
+                            <!-- osito -->
+                            <svg width="54" height="54" viewBox="0 0 24 24" aria-hidden="true">
+                                <circle cx="7" cy="8" r="3" fill="#ffe3f0" stroke="#f2c7da" stroke-width="1.2" />
+                                <circle cx="17" cy="8" r="3" fill="#ffe3f0" stroke="#f2c7da" stroke-width="1.2" />
+                                <path d="M12 21c4.4 0 8-2.9 8-6.5S16.4 7 12 7 4 9.9 4 14.5 7.6 21 12 21z" fill="#fff" stroke="#f2c7da" stroke-width="1.2" />
+                                <circle cx="10" cy="14" r="1" fill="#f7a8c7" />
+                                <circle cx="14" cy="14" r="1" fill="#f7a8c7" />
+                                <path d="M10 16c1.2 1 2.8 1 4 0" stroke="#d9b36c" stroke-width="1.6" stroke-linecap="round" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <footer>
+            Con cariño, te esperamos 💗
+        </footer>
+
+    </div>
+
+    <script>
+        /**************
+         * EDITA AQUÍ *
+         **************/
+        const BABY_NAME = "My Baby"; // <-- reemplazar
+        const EVENT_DATE = "2026-01-24"; // YYYY-MM-DD
+        const START_TIME_24H = "18:00"; // <-- hora inicio
+        const END_TIME_24H = "22:00"; // <-- hora fin
+        const TIMEZONE = "America/Lima";
+
+        const ADDRESS_TEXT = "Jirón Echenique 921, Magdalena del Mar, Lima, Perú";
+
+        // WhatsApp RSVP
+        const RSVP_PHONE = "51902353658"; // +51 902353658 (sin + ni espacios)
+        const RSVP_MESSAGE_TEMPLATE =
+            "Hola 😊. Confirmo mi asistencia al Baby Shower " + BABY_NAME + " 💗" +
+            "\\nFecha: 24 de enero, 2026" +
+            "\\nHora: " + START_TIME_24H + " a " + END_TIME_24H +
+            "\\n¡Gracias por la invitación!";
+
+        /***********************
+         * NO TOCAR (LÓGICA)   *
+         ***********************/
+        const EVENT_TITLE = `Baby Shower ${BABY_NAME}`;
+
+        // Links navegación
+        const GOOGLE_MAPS_URL =
+            "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(ADDRESS_TEXT);
+
+        const WAZE_URL =
+            "https://waze.com/ul?q=" + encodeURIComponent(ADDRESS_TEXT) + "&navigate=yes";
+
+        const EVENT_DESCRIPTION =
+            "¡Te esperamos para celebrar la llegada de nuestra niña! 💗" +
+            "\\n\\nUbicación: " + ADDRESS_TEXT +
+            "\\nGoogle Maps: " + GOOGLE_MAPS_URL +
+            "\\nWaze: " + WAZE_URL;
+
+        // Render datos
+        document.getElementById("babyName").textContent = BABY_NAME;
+        document.getElementById("addressTop").textContent = "Jirón Echenique 921, Magdalena del Mar";
+
+        // Hora bonita
+        function to12h(hhmm) {
+            const [hStr, m] = hhmm.split(":");
+            let h = parseInt(hStr, 10);
+            const ampm = h >= 12 ? "PM" : "AM";
+            h = h % 12;
+            if (h === 0) h = 12;
+            return `${h}:${m} ${ampm}`;
+        }
+        document.getElementById("prettyStart").textContent = to12h(START_TIME_24H);
+        document.getElementById("prettyEnd").textContent = to12h(END_TIME_24H);
+
+        // Botones navegación (SOLO sección ubicación)
+        const btnMaps2 = document.getElementById("btnMaps2");
+        const btnWaze2 = document.getElementById("btnWaze2");
+        btnMaps2.href = GOOGLE_MAPS_URL;
+        btnWaze2.href = WAZE_URL;
+
+        // Embed Google Maps (sin API key)
+        const embed = document.getElementById("mapsEmbed");
+        embed.src = "https://www.google.com/maps?q=" + encodeURIComponent(ADDRESS_TEXT) + "&output=embed";
+
+        // Botón WhatsApp
+        const waUrl =
+            "https://wa.me/" + RSVP_PHONE + "?text=" + encodeURIComponent(RSVP_MESSAGE_TEMPLATE.replaceAll("\\n", "\n"));
+        document.getElementById("btnWhatsApp").href = waUrl;
+
+        // ICS (Calendario iPhone/Android/Outlook)
+        function ymdToCompact(ymd) {
+            return ymd.replaceAll("-", "");
+        }
+
+        function hhmmToCompact(hhmm) {
+            return hhmm.replace(":", "") + "00";
+        }
+        const compactDate = ymdToCompact(EVENT_DATE);
+        const startCompact = compactDate + "T" + hhmmToCompact(START_TIME_24H);
+        const endCompact = compactDate + "T" + hhmmToCompact(END_TIME_24H);
+
+        function escapeICSText(text) {
+            return String(text)
+                .replaceAll("\\\\", "\\\\\\\\")
+                .replaceAll(";", "\\;")
+                .replaceAll(",", "\\,")
+                .replaceAll("\\n", "\\\\n");
+        }
+
+        function buildICS() {
+            const uid = "babyshower-" + Date.now() + "@invitacion.local";
+            const dtStamp = new Date().toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
+            const dtStart = compactDate + "T" + hhmmToCompact(START_TIME_24H);
+            const dtEnd = compactDate + "T" + hhmmToCompact(END_TIME_24H);
+
+            const lines = [
+                "BEGIN:VCALENDAR",
+                "VERSION:2.0",
+                "PRODID:-//Invitacion Baby Shower//ES",
+                "CALSCALE:GREGORIAN",
+                "METHOD:PUBLISH",
+                "BEGIN:VEVENT",
+                "UID:" + uid,
+                "DTSTAMP:" + dtStamp,
+                "SUMMARY:" + escapeICSText(EVENT_TITLE),
+                "DTSTART;TZID=" + TIMEZONE + ":" + dtStart,
+                "DTEND;TZID=" + TIMEZONE + ":" + dtEnd,
+                "LOCATION:" + escapeICSText(ADDRESS_TEXT),
+                "DESCRIPTION:" + escapeICSText(EVENT_DESCRIPTION),
+
+                // 🔔 Recordatorio a las 11:00 a. m. (7 horas antes)
+                "BEGIN:VALARM",
+                "TRIGGER:-PT420M",
+                "ACTION:DISPLAY",
+                "DESCRIPTION:Recordatorio Baby Shower 💗",
+                "END:VALARM",
+
+                "END:VEVENT",
+                "END:VCALENDAR"
+            ];
+
+            return lines.join("\\r\\n");
+        }
+
+        function downloadICS() {
+            const ics = buildICS();
+            const blob = new Blob([ics], {
+                type: "text/calendar;charset=utf-8"
+            });
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "BabyShower.ics";
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+
+            setTimeout(() => URL.revokeObjectURL(url), 800);
+        }
+
+        document.getElementById("btnIcs").addEventListener("click", downloadICS);
+    </script>
+</body>
+
+</html>
