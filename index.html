@@ -6,6 +6,23 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Baby Shower | Invitación</title>
 
+    <meta name="description" content="Te invitamos a celebrar la dulce llegada de nuestra bebé. Una tarde especial, llena de amor, detalles y momentos inolvidables 💗">
+
+    <!-- Open Graph / WhatsApp / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Baby Shower | Invitación 💗">
+    <meta property="og:description" content="Te invitamos a celebrar la dulce llegada de nuestra bebé. Una tarde especial, llena de amor, detalles y momentos inolvidables 💗">
+    <meta property="og:image" content="https://raw.githubusercontent.com/AndresLlanos0498/images/refs/heads/main/1.png">
+    <meta property="og:url" content="https://andresllanos0498.github.io/invitacion-baby-shower/">
+    <meta property="og:site_name" content="Baby Shower">
+
+    <!-- Twitter / otras apps -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Baby Shower | Invitación 💗">
+    <meta name="twitter:description" content="Te invitamos a celebrar la dulce llegada de nuestra bebé. Una tarde especial, llena de amor, detalles y momentos inolvidables 💗">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/AndresLlanos0498/images/refs/heads/main/1.png">
+
+
     <!-- Tipografías -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -76,34 +93,86 @@
             pointer-events: none;
         }
 
+        @media (max-width: 420px) {
+            .hero-copy .btn {
+                white-space: normal;
+            }
+        }
+
+
+        /* HERO grid (fix responsive overflow) */
         .hero-inner {
             position: relative;
             padding: 22px;
             display: grid;
             gap: 18px;
             align-items: center;
+
+            /* CLAVE para que nada empuje el ancho */
+            min-width: 0;
         }
 
-        .hero-copy {
-            position: relative;
-            padding: 22px;
-            border-radius: 18px;
-
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.28'%3E%3Cellipse cx='150' cy='175' rx='62' ry='52' fill='%23ffe3f0' stroke='%23f2c7da' stroke-width='3.5'/%3E%3Cellipse cx='125' cy='90' rx='20' ry='42' fill='%23fff6fb' stroke='%23f2c7da' stroke-width='3.5'/%3E%3Cellipse cx='175' cy='90' rx='20' ry='42' fill='%23fff6fb' stroke='%23f2c7da' stroke-width='3.5'/%3E%3Ccircle cx='140' cy='170' r='3.5' fill='%237a6673'/%3E%3Ccircle cx='160' cy='170' r='3.5' fill='%237a6673'/%3E%3Cpath d='M145 182c6 6 14 6 20 0' fill='none' stroke='%23d9b36c' stroke-width='3' stroke-linecap='round'/%3E%3C/g%3E%3C/svg%3E");
-
-            background-repeat: no-repeat;
-            background-size: 260px;
-            background-position: right 10px top 6px;
+        .hero-inner>* {
+            min-width: 0;
         }
 
-
-        /* responsive grid: 1 col mobile, 2 col desktop */
         @media (min-width: 920px) {
             .hero-inner {
                 grid-template-columns: 1.1fr .9fr;
                 padding: 30px;
             }
         }
+
+        /* Copy card */
+        .hero-copy {
+            position: relative;
+            padding: 22px;
+            border-radius: 18px;
+            min-width: 0;
+
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.28'%3E%3Cellipse cx='150' cy='175' rx='62' ry='52' fill='%23ffe3f0' stroke='%23f2c7da' stroke-width='3.5'/%3E%3Cellipse cx='125' cy='90' rx='20' ry='42' fill='%23fff6fb' stroke='%23f2c7da' stroke-width='3.5'/%3E%3Cellipse cx='175' cy='90' rx='20' ry='42' fill='%23fff6fb' stroke='%23f2c7da' stroke-width='3.5'/%3E%3Ccircle cx='140' cy='170' r='3.5' fill='%237a6673'/%3E%3Ccircle cx='160' cy='170' r='3.5' fill='%237a6673'/%3E%3Cpath d='M145 182c6 6 14 6 20 0' fill='none' stroke='%23d9b36c' stroke-width='3' stroke-linecap='round'/%3E%3C/g%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-size: 260px;
+            background-position: right 10px top 6px;
+        }
+
+        /* ART card (panel derecho) */
+        .hero-art {
+            border-radius: 18px;
+            border: 1px solid rgba(242, 199, 218, .85);
+            background: rgba(255, 255, 255, .70);
+            padding: 12px;
+
+            /* CLAVE para grid */
+            min-width: 0;
+            max-width: 100%;
+        }
+
+        /* Imagen dentro del panel */
+        .hero-art img {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border-radius: 14px;
+            object-fit: cover;
+        }
+
+        /* Tip general: evita desbordes por iframes o imágenes */
+        img,
+        iframe {
+            max-width: 100%;
+        }
+
+        /* Opcional: ajustar en móvil para que el fondo conejita no “ensucie” */
+        @media (max-width: 520px) {
+            .hero-copy {
+                padding: 16px;
+                background-size: 220px;
+                background-position: right 6px top 6px;
+            }
+        }
+
 
         .badge {
             display: inline-flex;
