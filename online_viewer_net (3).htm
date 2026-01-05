@@ -412,12 +412,7 @@
                     </div>
 
                     <h1>Baby Shower</h1>
-
-                    <p class="name">
-                        <small>Nombre de la bebé</small>
-                        <span id="babyName">My Baby</span>
-                    </p>
-
+                    <br>
                     <p class="sub">
                         Te invitamos a celebrar la dulce llegada de nuestra niña 💗
                         <br />Una tarde bonita, delicada y llena de amor.
@@ -643,7 +638,7 @@
         /**************
          * EDITA AQUÍ *
          **************/
-        const BABY_NAME = "My Baby"; // <-- reemplazar
+        const BABY_NAME = "Nuestra Bebé"; // <-- reemplazar
         const EVENT_DATE = "2026-01-24"; // YYYY-MM-DD
         const START_TIME_24H = "18:00"; // <-- hora inicio
         const END_TIME_24H = "22:00"; // <-- hora fin
@@ -654,7 +649,7 @@
         // WhatsApp RSVP
         const RSVP_PHONE = "51902353658"; // +51 902353658 (sin + ni espacios)
         const RSVP_MESSAGE_TEMPLATE =
-            "Hola 😊. Confirmo mi asistencia al Baby Shower " + BABY_NAME + " 💗" +
+            "Hola 😊. Confirmo mi asistencia al Baby Shower " + BABY_NAME + "♥️" +
             "\\nFecha: 24 de enero, 2026" +
             "\\nHora: " + START_TIME_24H + " a " + END_TIME_24H +
             "\\n¡Gracias por la invitación!";
@@ -678,7 +673,6 @@
             "\\nWaze: " + WAZE_URL;
 
         // Render datos
-        document.getElementById("babyName").textContent = BABY_NAME;
         document.getElementById("addressTop").textContent = "Jirón Echenique 921, Magdalena del Mar";
 
         // Hora bonita
