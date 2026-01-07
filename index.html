@@ -487,6 +487,40 @@
             color: var(--muted);
             text-align: center;
         }
+
+        /* Interacción móvil (tap) */
+        .decor .tile:active,
+        .decor .tile:focus-visible {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 14px 30px rgba(247, 168, 199, .35);
+            background-color: rgba(255, 255, 255, .9);
+        }
+
+        /* Evita el highlight azul de Android */
+        .decor .tile {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .decor .tile:nth-child(1):active svg {
+            transform: rotate(-6deg);
+        }
+
+        /* 🍼 */
+        .decor .tile:nth-child(2):active svg {
+            transform: scale(1.12);
+        }
+
+        /* 💗 */
+        .decor .tile:nth-child(3):active svg {
+            transform: rotate(15deg);
+        }
+
+        /* ⭐ */
+        .decor .tile:nth-child(4):active svg {
+            transform: scale(1.08);
+        }
+
+        /* 🧸 */
     </style>
 </head>
 
